@@ -1,0 +1,100 @@
+form {
+    width: 75%;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.pagetitle {
+    text-align: center;
+}
+
+#chartcontainer {
+    width: 500px;
+    height: 500px;
+}
+
+.navbar-default {
+    background-image: none;
+}
+
+#main-bar {
+    background-color: #DADDC7;
+}
+
+.poll-link {
+    width: 35%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #DADDC7;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #B7BA9E;
+    border-radius: 5px;
+    font-size: 30px;
+    color: #2A472F;
+    text-decoration: none !important;
+    display: block;
+}
+
+
+.delete-button {
+    width: 8%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 15px;
+    background-color: red;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    display: block;
+}
+
+.poll-link:hover, poll-link:link, poll-link:visited, poll-link:active {
+    color:#2A472F;
+}
+
+.poll-title {
+    text-align: center;
+}
+
+.col-md-6 {
+    padding: 15px;
+}
+
+.input-group-addon {
+    text-align: left;
+    width: 175px;
+}
+
+.big-link {
+    text-align: center;
+    font-size: 50px;
+    border-style: solid;
+    border-color: black;
+    padding: 50px;
+    border-width: 5px;
+    border-radius: 10px;
+    background-color: #33290B;
+    color: beige;
+    text-decoration: none !important;
+}
+
+.big-link:hover, big-link:link, big-link:visited, big-link:active {
+    color: beige;
+}
+
+.small-link {
+    text-align: center;
+    font-size: 20px;
+    border-style: solid;
+    border-color: black;
+    padding: 20px;
+    border-width: 5px;
+    border-radius: 10px;
+    background-color: #33290B;
+    color: beige;
+    text-decoration: none !important;
+}

@@ -1,0 +1,28 @@
+doctype
+html
+    head
+        title Log In
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous")
+        link(rel="stylesheet" type="text/css" href="/css/style.css")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
+    body
+        include navbar.jade
+        
+        h2(class='pagetitle') Log In
+        if message.length > 0
+            div(class='alert alert-danger') #{message}
+        form(action='/login' method='post')
+            div(class='form-group')
+                label Username
+                input(class='form-control' placeholder='Username' name='username')
+            div(class='form-group')
+                label Password
+                input(type='password' class='form-control' placeholder='Password' name='password')
+            button(type='submit' class='btn btn-default') Log In
+            
+        div(class='container')
+            div(class='row')
+                a(class='col-md-4 small-link' href='/') Home
+                div(class='col-md-4')
+                a(class='col-md-4 small-link' href='/signup') Register

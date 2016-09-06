@@ -1,0 +1,60 @@
+doctype
+html
+    head
+        title #{poll.name}
+        
+        meta(property="og:url" content=fullUrl)
+        meta(property="og:type" content="website")
+        meta(property="og:title" content="fcc voting app")
+
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous")
+        link(rel="stylesheet" type="text/css" href="/css/style.css")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js")
+        script(type='text/javascript').
+            var poll =!{JSON.stringify(poll)}
+        script(src='/piechart.js')
+        
+        
+        
+        
+    body
+    
+        div(id='fb-root')
+        script.
+            function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js%23xfbml=1&status=0";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+    
+        include navbar.jade
+        div(class='container')
+            div(class='poll-title')
+                h2 #{poll.title}
+                h4 A poll created by #{poll.creator}
+            div(class='row')
+                div(class='col-md-6')
+                    form(method='POST' action='/vote/'+poll._id)
+                        each option in poll.options
+                            span(class='input-group-addon')
+                                input(class='radio-option' type='radio' name='option' value=option._id)
+                                |     #{option.name}
+                            br
+                        input(class='btn btn-submit' type='submit' value='Vote!')
+                    a(class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse") Share on Facebook
+                div(id='chartcontainer' class='col-md-6')
+                    canvas(id='myChart' width="100px" height="100px")
+                if loggedin
+                    form(method='POST' action='/poll/edit/' + poll._id)
+                        input(type='text' name='newoption' placeholder='New Option')
+                        input(class='btn btn-submit' type='submit' value='Add a new option')
+                        
+        
+        div(class="fb-share-button" data-href=fullUrl data-layout="button")
+
+        
