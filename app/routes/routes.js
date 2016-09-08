@@ -141,6 +141,7 @@ module.exports = function(app, passport){
         console.log('received vote request')
         var pollid = req.params.id;
         var optionid = req.body.option;
+        console.log('optionid = ' + optionid)
         var username = '';
         if (req.isAuthenticated()){
             username = req.user.username;
@@ -154,7 +155,7 @@ module.exports = function(app, passport){
             },
             function(err, poll){
                 if (err)(console.log(err));
-                console.log("found matching poll and option")
+                if (poll){
                 //check if user has already voted in this poll
             /* var hasVoted = false;
                 if (username != ''){
@@ -182,6 +183,10 @@ module.exports = function(app, passport){
                         if(err)(console.log(err))
                         res.redirect('/poll/' + pollid)
                     })
+                }
+                else {
+                    res.redirect('/poll/' + pollid)
+                }
                 //}
             });
     })
